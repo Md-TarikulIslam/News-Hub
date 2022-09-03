@@ -43,7 +43,7 @@ const displayNews = async news => {
     console.log(news);
     const number = document.getElementById('number')
     number.innerHTML = `
-    <p>${news.length} items founded in portal news</p>
+    <p>${news.length} items found in this category.</p>
     `
     toggle(true)
     const details = document.getElementById('details');
