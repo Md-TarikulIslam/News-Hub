@@ -59,10 +59,10 @@ const displayNews = news => {
     <p>${article.details.length > 300 ? article.details.slice(0, 300) + '...' : article.details}</p>
     <div class="flex">
    
-    <p><i class="fa-solid fa-pen-nib"></i> ${article.author.name}</p>
+    <p><i class="fa-solid fa-pen-nib"></i> ${article.author.name ? article.author.name : 'No Author Name Found'}</p>
     <p><i class="fa-regular fa-calendar"></i> ${article.author.published_date}</p>
     
-    <p><i class="fa-regular fa-eye"></i> ${article.total_view}</p>
+    <p><i class="fa-regular fa-eye"></i> ${article.total_view ? article.total_view : 'No Views Found'}</p>
     
     </div>
     <div class="card-actions justify-end">
@@ -93,10 +93,13 @@ const loadPop = (id) => {
 const showdetailsModal = (modal) => {
     console.log(modal)
     const modalBox = document.getElementById('modal-box');
-    const { image_url, total_view } = modal
+    const { image_url, total_view, author, details } = modal
     modalBox.innerHTML = `
    <img src="${image_url}">
-   <p class="py-4">${total_view ? total_view : 'No data available'}</p>
+   <p>${details}</p>
+   <p class="py-4"><i class="fa-solid fa-pen-nib"></i> ${author.name ? author.name : 'No data available'}</p>
+   <p class="py-4"><i class="fa-regular fa-eye"></i> ${total_view ? total_view : 'No data available'}</p>
+   
    
    `
 
