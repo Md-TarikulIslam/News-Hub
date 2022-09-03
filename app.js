@@ -47,15 +47,34 @@ const displayNews = news => {
         newsDiv.classList.add(`lg:card-side`);
         newsDiv.classList.add(`bg-base-100`);
         newsDiv.classList.add(`shadow-xl`);
+        newsDiv.classList.add(`m-8`);
+        newsDiv.classList.add(`p-8`);
 
         newsDiv.innerHTML = `
    
     <figure class:"w-40"><img  style="width: 500px ;" src="${article.image_url}" alt="Album"></figure>
-    <div class="card-body">${article.title}</div>
-      <h2 class="card-title">${article.category_id}</h2>
-      <p>${article.rating.number}</p>
-      <div class="card-actions justify-end">
-        <label for="my-modal-4" onclick="loadPop('${article._id}')" class="btn modal-button">Listen</label>
+
+    <div class="card-body">
+    <h2 class="card-title">${article.title}</h2>
+    <p>${article.details}</p>
+    <div class="flex">
+   
+    <p><i class="fa-solid fa-pen-nib"></i> ${article.author.name}</p>
+    <p><i class="fa-regular fa-calendar"></i> ${article.author.published_date}</p>
+    
+    <p><i class="fa-regular fa-eye"></i> ${article.total_view}</p>
+    
+    </div>
+    <div class="card-actions justify-end">
+    <label for="my-modal-4" onclick="loadPop('${article._id}')" class="btn modal-button">Listen</label>
+    </div>
+  </div>
+ 
+   
+    
+     
+     
+      
         
         `;
         details.appendChild(newsDiv);
