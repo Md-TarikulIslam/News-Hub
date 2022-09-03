@@ -8,25 +8,25 @@ const setMenu = async () => {
     // console.log(data.data.news_category)
     // console.log(data.data)
     const objects = data.data.news_category
-    objects.forEach(obj => console.log(obj))
+    // objects.forEach(obj => console.log(obj))
     // const lists = data.data.news_category
-    const menus = document.getElementById('menus')
+    const menus = document.getElementById('menus');
     for (const list of objects) {
         // console.log(list.category_name)
-        const li = document.createElement('li')
-        li.classList.add('menu')
+        const li = document.createElement('li');
+        // li.classList.add('menu')
         li.innerHTML = `
         <a onclick="loadId(${list.category_id})">${list.category_name}</a>
         
-        `
-        menus.appendChild(li)
+        `;
+        menus.appendChild(li);
 
     }
 }
 
 const loadId = async (category_id) => {
     const url = `https://openapi.programming-hero.com/api/news/category/0${category_id}`
-    console.log(url)
+    // console.log(url)
     const response = await fetch(url);
     const data = await response.json();
 
@@ -36,11 +36,11 @@ const loadId = async (category_id) => {
 }
 
 const displayNews = news => {
-    console.log(news);
+    // console.log(news);
 
     const details = document.getElementById('details');
     details.innerHTML = '';
-    news.map(article => {
+    news.forEach(article => {
         console.log(article);
         const newsDiv = document.createElement('div');
         newsDiv.classList.add(`card`);
@@ -55,7 +55,8 @@ const displayNews = news => {
       <h2 class="card-title">${article.category_id}</h2>
       <p>${article.rating.number}</p>
       <div class="card-actions justify-end">
-        <label for="my-modal-4" onclick="loadPop(${article})" class="btn modal-button">Listen</label>
+        <label for="my-modal-4" onclick="loadPop('${article._id}')" class="btn modal-button">Listen</label>
+        
         `;
         details.appendChild(newsDiv);
     })
@@ -63,11 +64,26 @@ const displayNews = news => {
 }
 
 
-// const loadPop = (id) => {
-//     console.log(id)
-//     fetch(`https://openapi.programming-hero.com/api/news/${id}`)
-//         .then(res => res.json())
-//         .then(data => console.log(data))
+const loadPop = (id) => {
+    // console.log(id)
+    fetch(`https://openapi.programming-hero.com/api/news/${id}`)
+        .then(res => res.json())
+        .then(data => showdetailsModal(data.data[0]))
+}
+
+const showdetailsModal = (modal) => {
+    console.log(modal)
+    const modalBox = document.getElementById('modal-box');
+    const { image_url, total_view } = modal
+    modalBox.innerHTML = `
+   <img src="${image_url}">
+   <p class="py-4">You've been selected for a chance to get one year of subscription to use Wikipedia for free!</p>
+   
+   `
+
+}
+
+
 
 //     const modal = document.getElementById('modal_id');
 //     const label = document.createElement('label')
