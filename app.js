@@ -7,6 +7,7 @@ const loadCategories = async () => {
 const setMenu = async () => {
     const data = await loadCategories();
 
+
     // console.log(data.data.news_category)
     // console.log(data.data)
     const objects = data.data.news_category
@@ -47,12 +48,12 @@ const toggle = isLoading => {
         loaderSection.classList.add('hidden');
     }
 }
-const displayNews = news => {
-
+const displayNews = async news => {
+    const data = await loadCategories();
     // console.log(news);
     const number = document.getElementById('number')
     number.innerHTML = `
-    <p>${news.length} items founded in portal news  </p>
+    <p>${news.length} items founded in portal news {} </p>
     `
     // console.log(number)
     toggle(true)
@@ -71,14 +72,14 @@ const displayNews = news => {
 
         newsDiv.innerHTML = `
    
-    <figure class:"w-40"><img  style="width: 500px ;" src="${article.image_url}" alt="Album"></figure>
+    <figure><img  src="${article.thumbnail_url}" alt="Album"></figure>
 
     <div class="card-body">
     <h2 class="card-title">${article.title}</h2>
     <p>${article.details.length > 300 ? article.details.slice(0, 300) + '...' : article.details}</p>
     <div class="flex">
-   
-    <p><i class="fa-solid fa-pen-nib"></i> ${article.author.name ? article.author.name : 'No Author Name Found'}</p>
+   <img class="w-10 rounded-full" src="${article.author.img}">
+    <p class="ml-4 mt-2"> ${article.author.name ? article.author.name : 'No Author Name Found'}</p>
     <p><i class="fa-regular fa-calendar"></i> ${article.author.published_date}</p>
     
     <p><i class="fa-regular fa-eye"></i> ${article.total_view ? article.total_view : 'No Views Found'}</p>

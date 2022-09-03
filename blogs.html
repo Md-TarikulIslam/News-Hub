@@ -1,0 +1,141 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link href="https://cdn.jsdelivr.net/npm/daisyui@2.24.0/dist/full.css" rel="stylesheet" type="text/css" />
+<script src="https://cdn.tailwindcss.com"></script>
+</head>
+<body class="mx-8">
+    <header class="my-8 ">
+        <div class="navbar bg-base-100">
+            <div class="flex-1">
+              <a class="btn btn-ghost normal-case text-2xl">News Hub</a>
+            </div>
+            <div class="flex-none">
+                <ul class="menu menu-horizontal p-0">
+                  <li><a href="index.html">News</a></li>
+                  <li><a href="blogs.html">Blogs</a></li>
+                  </ul>
+            </div>
+                <label tabindex="0" class="btn btn-ghost btn-circle avatar">
+                  <div class="w-10 rounded-full">
+                    <img src="images/1.jpg" />
+                  </div>
+                </label>
+              </div>
+            </div>
+          </div>
+    </header>
+    <section class="m-20">
+    <p class="text-center text-4xl font-bold text-red-700 pb-8">Frequently Asked Questions</p>   
+<div tabindex="0" class="collapse border border-base-300 bg-base-100 rounded-box"> 
+  <div class="collapse-title text-center text-xl font-medium">
+    Difference between var, let and const
+  </div>
+  <div class="collapse-content "> 
+    <p>Var:
+        Before the advent of ES6, var declarations ruled. There are issues associated with variables declared with var, though. That is why it was necessary for new ways to declare variables to emerge. <br>
+    
+        Let:
+        let is now preferred for variable declaration. It's no surprise as it comes as an improvement to var declarations. It also solves the problem with var that we just covered. <br>
+    
+        Const:
+        Variables declared with the const maintain constant values. const declarations share some similarities with let declarations.</p>
+  </div>
+</div>
+
+<div tabindex="0" class="collapse border border-base-300 bg-base-100 rounded-box"> 
+  <div class="collapse-title text-center text-xl font-medium">
+    Difference between regular function and arrow function
+  </div>
+  <div class="collapse-content "> 
+    <p>Arrow function — also called fat arrow function— is a new feature introduced in ES6 that is a more concise syntax for writing function expressions. While both regular JavaScript functions and arrow functions work in a similar manner, there are certain differences between them.
+
+        1. Syntax
+        
+        The arrow function example above allows a developer to accomplish the same result with fewer lines of code and approximately half the typing.
+        
+        Curly brackets aren’t required if only one expression is present. The above example can also be written like this:
+        
+        let add = (x, y) => x + y;
+        If there’s only one argument, then the parentheses are not required either:
+        
+        let squareNum = x => x * x;
+        What if there are no arguments?
+        
+        let sayHi = _ => console.log(“Hi”);
+        2. Arguments binding
+        Arrow functions do not have an arguments binding. However, they have access to the arguments object of the closest non-arrow parent function. Named and rest parameters are heavily relied upon to capture the arguments passed to arrow functions.
+        
+        In case of a regular function:
+        
+        let myFunc = {  
+         showArgs(){ 
+          console.log(arguments); 
+         } 
+        }; 
+        myFunc.showArgs(1, 2, 3, 4);
+        
+        In case of an arrow function:
+        
+        let myFunc = {  
+          showArgs : () => { 
+          console.log(...arguments); 
+         } 
+        }; 
+        myFunc.showArgs(1, 2, 3, 4);
+        
+        3. Use of this keyword
+        Unlike regular functions, arrow functions do not have their own this. The value of this inside an arrow function remains the same throughout the lifecycle of the function and is always bound to the value of this in the closest non-arrow parent function.
+        
+        
+        
+        4. Using new keyword
+        Regular functions created using function declarations or expressions are constructible and callable. Since regular functions are constructible, they can be called using the new keyword.
+        
+        However, the arrow functions are only callable and not constructible, i.e arrow functions can never be used as constructor functions. Hence, they can never be invoked with the new keyword.
+        
+        let add = (x, y) => console.log(x + y);
+        new add(2,3);
+        
+        5. No duplicate named parameters
+        Arrow functions can never have duplicate named parameters, whether in strict or non-strict mode.
+        
+        It means that the following is valid JavaScript:
+        
+        function add(x, x){}
+        It is not, however, when using strict mode:
+        
+        'use strict';
+        function add(x, x){}
+        // SyntaxError: duplicate formal argument x
+        With arrow functions, duplicate named arguments are always, regardless of strict or non-strict mode, invalid.
+        
+        (x, x) => {}
+        // SyntaxError: duplicate argument names not allowed in this context</p>
+  </div>
+</div>
+<div tabindex="0" class="collapse border border-base-300 bg-base-100 rounded-box"> 
+  <div class="collapse-title text-center text-xl font-medium">
+    DIfference between map(), forEach(), filter() and find()
+  </div>
+  <div class="collapse-content "> 
+    <p>
+        .map() executes the same code on every element in an array and returns a new array with the updated elements.
+        <br>
+        .forEach(), is used to execute the same code on every element in an array but does not change the array and it returns undefined.
+        <br>
+       
+
+        .filter() checks every element in an array to see if it meets a certain criteria and returns a new array with the elements that return truthy for the criteria. <br>
+
+        .find() method in Javascript is used to get the value of the first element in the array that satisfies the provided condition. It checks all the elements of the array and whichever first element satisfies the condition is going to print.
+    </p>
+  </div>
+</div>
+    </section>
+</body>
+</html>
