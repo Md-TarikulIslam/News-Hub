@@ -96,30 +96,11 @@ const showdetailsModal = (modal) => {
     const { image_url, total_view } = modal
     modalBox.innerHTML = `
    <img src="${image_url}">
-   <p class="py-4">You've been selected for a chance to get one year of subscription to use Wikipedia for free!</p>
+   <p class="py-4">${total_view ? total_view : 'No data available'}</p>
    
    `
 
 }
-
-
-
-//     const modal = document.getElementById('modal_id');
-//     const label = document.createElement('label')
-//     label.innerHTML = `
-//         <label class="modal-box relative" for="">
-//     <h3 class="text-lg font-bold">Congratulations random Internet user!</h3>
-//     <p class="py-4">You've been selected for a chance to get one year of subscription to use Wikipedia for free!</p>
-//   </label>
-
-//         `;
-//     modal.appendChild(label)
-
-
-// }
-
-// loadPop()
-
 
 
 
