@@ -56,7 +56,7 @@ const displayNews = news => {
 
     <div class="card-body">
     <h2 class="card-title">${article.title}</h2>
-    <p>${article.details}</p>
+    <p>${article.details.length > 300 ? article.details.slice(0, 300) + '...' : article.details}</p>
     <div class="flex">
    
     <p><i class="fa-solid fa-pen-nib"></i> ${article.author.name}</p>
