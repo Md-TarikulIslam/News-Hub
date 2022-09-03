@@ -1,10 +1,12 @@
 const loadCategories = async () => {
+
     const response = await fetch('https://openapi.programming-hero.com/api/news/categories');
     const data = await response.json();
     return data;
 }
 const setMenu = async () => {
     const data = await loadCategories();
+
     // console.log(data.data.news_category)
     // console.log(data.data)
     const objects = data.data.news_category
@@ -25,6 +27,8 @@ const setMenu = async () => {
 }
 
 const loadId = async (category_id) => {
+
+
     const url = `https://openapi.programming-hero.com/api/news/category/0${category_id}`
     // console.log(url)
     const response = await fetch(url);
@@ -34,11 +38,26 @@ const loadId = async (category_id) => {
 
 
 }
-
+const toggle = isLoading => {
+    const loaderSection = document.getElementById('loader');
+    if (isLoading) {
+        loaderSection.classList.remove('hidden');
+    }
+    else {
+        loaderSection.classList.add('hidden');
+    }
+}
 const displayNews = news => {
-    // console.log(news);
 
+    // console.log(news);
+    const number = document.getElementById('number')
+    number.innerHTML = `
+    <p>${news.length} items founded in portal news  </p>
+    `
+    // console.log(number)
+    toggle(true)
     const details = document.getElementById('details');
+
     details.innerHTML = '';
     news.forEach(article => {
         console.log(article);
@@ -69,16 +88,15 @@ const displayNews = news => {
     <label for="my-modal-4" onclick="loadPop('${article._id}')" class="btn modal-button">Listen</label>
     </div>
   </div>
- 
-   
-    
-     
-     
-      
+
         
         `;
         details.appendChild(newsDiv);
+
     })
+    toggle(false)
+
+
 
 }
 
@@ -104,7 +122,6 @@ const showdetailsModal = (modal) => {
    `
 
 }
-
 
 
 
